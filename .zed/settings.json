@@ -1,0 +1,60 @@
+{
+  // Extension Oxc requise : ouvrir "zed: extensions" et chercher "Oxc"
+  "lsp": {
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "configPath": null,
+          "run": "onType",
+          "disableNestedConfig": false,
+          "fixKind": "safe_fix",
+          "unusedDisableDirectives": "warn"
+        }
+      }
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.configPath": null,
+          "run": "onSave"
+        }
+      }
+    }
+  },
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "prettier": { "allowed": false },
+      "formatter": [
+        { "language_server": { "name": "oxfmt" } },
+        { "code_action": "source.fixAll.oxc" }
+      ]
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "prettier": { "allowed": false },
+      "formatter": [
+        { "language_server": { "name": "oxfmt" } },
+        { "code_action": "source.fixAll.oxc" }
+      ]
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "prettier": { "allowed": false },
+      "formatter": [
+        { "language_server": { "name": "oxfmt" } },
+        { "code_action": "source.fixAll.oxc" }
+      ]
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "prettier": { "allowed": false },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    },
+    "CSS": {
+      "format_on_save": "on",
+      "prettier": { "allowed": false },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    }
+  }
+}

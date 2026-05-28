@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =============================================
+   DARK THEME — carbon/neon (default)
+   ============================================= */
+:root {
+  --c-bg: #0a0a0a;
+  --c-surface: #141414;
+  --c-surface2: #1c1c1c;
+  --c-border: #282828;
+  --c-border2: #323232;
+  --c-text: #f0f0f0;
+  --c-text-muted: #686868;
+  --c-accent: #aaff2e;
+  --c-accent-dim: rgba(170, 255, 46, 0.12);
+  --c-accent-hover: #c4ff66;
+  --c-valid: #39ff8a;
+  --c-expiring: #ffb800;
+  --c-expired: #ff4444;
+  --c-warning: #ffb800;
+  --c-rt: #00e5ff;
+  --c-info: #00c8e0;
+  --header-h: 57px;
+  font-size: 14px;
+  color-scheme: dark;
+}
+
+/* =============================================
+   LIGHT THEME
+   ============================================= */
+html.light {
+  --c-bg: #f4f4f4;
+  --c-surface: #ffffff;
+  --c-surface2: #ebebeb;
+  --c-border: #d8d8d8;
+  --c-border2: #c8c8c8;
+  --c-text: #1a1a1a;
+  --c-text-muted: #888888;
+  --c-accent: #527a00;
+  --c-accent-dim: rgba(82, 122, 0, 0.1);
+  --c-accent-hover: #3d5c00;
+  --c-valid: #16a34a;
+  --c-expiring: #d97706;
+  --c-expired: #dc2626;
+  --c-warning: #d97706;
+  --c-rt: #0369a1;
+  --c-info: #0284c7;
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.5;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--c-accent-hover);
+  text-decoration: underline;
+}
