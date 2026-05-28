@@ -120,6 +120,8 @@ export interface Filters {
   modes: string[]
   has_gtfs_rt: boolean | null
   has_vehicle_positions: boolean | null
+  has_trip_updates: boolean | null
+  has_service_alerts: boolean | null
   has_shapes: boolean | null
   trips_zero_only: boolean
   covered_area_types: string[]

@@ -35,6 +35,8 @@ interface Props {
   onReset: () => void
   activeCount: number
   totalCount: number
+  isOpen: boolean
+  onClose: () => void
 }
 
 function Toggle({
@@ -98,12 +100,19 @@ export function FilterPanel({
   onReset,
   activeCount,
   totalCount,
+  isOpen,
+  onClose,
 }: Props) {
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) =>
     onChange({ ...filters, [key]: value })
 
   return (
-    <aside className="filter-panel">
+    <>
+      <div
+        className={`filter-overlay${isOpen ? ' filter-overlay--visible' : ''}`}
+        onClick={onClose}
+      />
+      <aside className={`filter-panel${isOpen ? ' filter-panel--open' : ''}`}>
       <div className="filter-panel__header">
         <span className="filter-panel__count">
           {activeCount} / {totalCount} résultats
@@ -137,6 +146,16 @@ export function FilterPanel({
           label="Positions véhicules"
           value={filters.has_vehicle_positions}
           onChange={(v) => set('has_vehicle_positions', v)}
+        />
+        <Toggle
+          label="Horaires temps réel"
+          value={filters.has_trip_updates}
+          onChange={(v) => set('has_trip_updates', v)}
+        />
+        <Toggle
+          label="Alertes de service"
+          value={filters.has_service_alerts}
+          onChange={(v) => set('has_service_alerts', v)}
         />
         <Toggle
           label="has_shapes"
@@ -209,6 +228,7 @@ export function FilterPanel({
           ))}
         </div>
       </div>
-    </aside>
+      </aside>
+    </>
   )
 }

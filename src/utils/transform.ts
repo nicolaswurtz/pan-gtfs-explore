@@ -165,6 +165,8 @@ export function applyFilters(datasets: ProcessedDataset[], filters: Filters): Pr
 
     if (filters.has_gtfs_rt === true && !d.has_gtfs_rt) return false
     if (filters.has_vehicle_positions === true && !d.has_vehicle_positions) return false
+    if (filters.has_trip_updates === true && !d.has_trip_updates) return false
+    if (filters.has_service_alerts === true && !d.has_service_alerts) return false
     if (filters.has_shapes === true && !d.has_shapes) return false
     if (filters.trips_zero_only && !d.has_trips_zero) return false
 

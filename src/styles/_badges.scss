@@ -1,0 +1,128 @@
+// Badges & chips
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &--valid {
+    background: rgba(57, 255, 138, 0.1);
+    color: var(--c-valid);
+    border: 1px solid rgba(57, 255, 138, 0.25);
+
+    html.light & {
+      background: rgba(22, 163, 74, 0.1);
+      border-color: rgba(22, 163, 74, 0.25);
+    }
+  }
+
+  &--expiring {
+    background: rgba(255, 184, 0, 0.1);
+    color: var(--c-expiring);
+    border: 1px solid rgba(255, 184, 0, 0.25);
+
+    html.light & {
+      background: rgba(217, 119, 6, 0.1);
+      border-color: rgba(217, 119, 6, 0.25);
+    }
+  }
+
+  &--expired {
+    background: rgba(255, 68, 68, 0.12);
+    color: var(--c-expired);
+    border: 1px solid rgba(255, 68, 68, 0.25);
+
+    html.light & {
+      background: rgba(220, 38, 38, 0.1);
+      border-color: rgba(220, 38, 38, 0.25);
+    }
+  }
+
+  &--warning {
+    background: rgba(255, 184, 0, 0.1);
+    color: var(--c-warning);
+    border: 1px solid rgba(255, 184, 0, 0.25);
+
+    html.light & {
+      background: rgba(217, 119, 6, 0.1);
+      border-color: rgba(217, 119, 6, 0.25);
+    }
+  }
+
+  &--rt {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--c-rt);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+
+    html.light & {
+      background: rgba(3, 105, 161, 0.1);
+      border-color: rgba(3, 105, 161, 0.25);
+    }
+  }
+
+  &--info {
+    background: rgba(0, 200, 224, 0.1);
+    color: var(--c-info);
+    border: 1px solid rgba(0, 200, 224, 0.2);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  &--mode {
+    background: var(--c-accent-dim);
+    color: var(--c-accent);
+    border: 1px solid rgba(170, 255, 46, 0.2);
+
+    html.light & {
+      border-color: rgba(82, 122, 0, 0.2);
+    }
+  }
+
+  &--feature {
+    background: var(--c-surface2);
+    color: var(--c-text-muted);
+    border: 1px solid var(--c-border);
+  }
+
+  &--xs {
+    padding: 1px 5px;
+    font-size: 0.63rem;
+  }
+}
+
+.rtbadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  &--on {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--c-rt);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+
+    html.light & {
+      background: rgba(3, 105, 161, 0.1);
+      border-color: rgba(3, 105, 161, 0.25);
+    }
+  }
+
+  &--off {
+    background: var(--c-surface2);
+    color: var(--c-text-muted);
+    opacity: 0.4;
+    border: 1px solid var(--c-border);
+  }
+}

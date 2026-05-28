@@ -1,0 +1,31 @@
+// Reset & base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--c-accent-hover);
+    text-decoration: underline;
+  }
+}

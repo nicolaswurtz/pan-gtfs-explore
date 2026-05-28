@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
-import './App.css'
+import './App.scss'
 import { useDataLoader } from './hooks/useDataLoader'
 import { FilterPanel } from './components/FilterPanel'
 import { DatasetList } from './components/DatasetList'
@@ -29,6 +29,8 @@ const DEFAULT_FILTERS: Filters = {
   modes: [],
   has_gtfs_rt: null,
   has_vehicle_positions: null,
+  has_trip_updates: null,
+  has_service_alerts: null,
   has_shapes: null,
   trips_zero_only: false,
   covered_area_types: [],
@@ -41,6 +43,7 @@ function App() {
   const [view, setView] = useState<ViewMode>('cards')
   const [isDark, setIsDark] = useState(true)
   const [aboutOpen, setAboutOpen] = useState(true)
+  const [filterOpen, setFilterOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
 
   // Apply theme class to <html>
@@ -53,7 +56,7 @@ function App() {
     const el = headerRef.current
     if (!el) return
     const update = () => {
-      document.documentElement.style.setProperty('--header-h', `${el.offsetHeight}px`)
+      document.documentElement.style.setProperty('--c-header-h', `${el.offsetHeight}px`)
     }
     update()
     const ro = new ResizeObserver(update)
@@ -154,13 +157,22 @@ function App() {
             }}
             activeCount={filtered.length}
             totalCount={datasets.length}
+            isOpen={filterOpen}
+            onClose={() => setFilterOpen(false)}
           />
           <main className="app-main">
+            <button
+              className="filter-toggle-btn"
+              onClick={() => setFilterOpen(true)}
+              type="button"
+            >
+              ☰ Filtres ({filtered.length}/{datasets.length})
+            </button>
             {view === 'cards' && (
               <DatasetList datasets={filtered} page={page} onPageChange={setPage} />
             )}
             {view === 'table' && <TableView datasets={filtered} />}
-            {view === 'stats' && <StatsView datasets={filtered} />}
+            {view === 'stats' && <StatsView datasets={filtered} isDark={isDark} />}
           </main>
         </div>
       )}

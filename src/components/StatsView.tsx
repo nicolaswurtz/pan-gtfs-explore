@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'recharts'
 import type { ProcessedDataset } from '../types'
+import { useChartColors } from '../hooks/useChartColors'
 
 const PALETTE = [
   '#4f8ef7',
@@ -88,9 +89,11 @@ function ChartCard({ title, children, height = 260 }: ChartCardProps) {
 
 interface Props {
   datasets: ProcessedDataset[]
+  isDark: boolean
 }
 
-export function StatsView({ datasets }: Props) {
+export function StatsView({ datasets, isDark }: Props) {
+  const { chartTextMuted, tooltipStyle, axisTickText, axisTickMuted, legendStyle } = useChartColors(isDark)
   if (datasets.length === 0) {
     return <div className="stats-empty">Aucune donnée à afficher — modifiez les filtres.</div>
   }
@@ -179,14 +182,6 @@ export function StatsView({ datasets }: Props) {
     { name: '3+ flux', value: datasets.filter((d) => d.gtfs_resources.length >= 3).length },
   ].filter((d) => d.value > 0)
 
-  const tooltipStyle = {
-    backgroundColor: '#1a1d27',
-    border: '1px solid #2e3248',
-    borderRadius: 6,
-    color: '#e2e4f0',
-    fontSize: 12,
-  }
-
   return (
     <div className="stats-view">
       {/* KPIs */}
@@ -238,11 +233,11 @@ export function StatsView({ datasets }: Props) {
               layout="vertical"
               margin={{ left: 10, right: 30, top: 4, bottom: 4 }}
             >
-              <XAxis type="number" tick={{ fill: '#8b91b0', fontSize: 11 }} />
+              <XAxis type="number" tick={axisTickMuted} />
               <YAxis
                 type="category"
                 dataKey="name"
-                tick={{ fill: '#e2e4f0', fontSize: 11 }}
+                tick={axisTickText}
                 width={130}
               />
               <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
@@ -277,7 +272,7 @@ export function StatsView({ datasets }: Props) {
                   />
                 ))}
               </Pie>
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: '#e2e4f0' }} />
+              <Legend iconType="circle" wrapperStyle={legendStyle} />
               <Tooltip contentStyle={tooltipStyle} />
             </PieChart>
           </ResponsiveContainer>
@@ -300,7 +295,7 @@ export function StatsView({ datasets }: Props) {
                   <Cell key={i} fill={PALETTE[i]} />
                 ))}
               </Pie>
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: '#e2e4f0' }} />
+              <Legend iconType="circle" wrapperStyle={legendStyle} />
               <Tooltip contentStyle={tooltipStyle} />
             </PieChart>
           </ResponsiveContainer>
@@ -316,11 +311,11 @@ export function StatsView({ datasets }: Props) {
               layout="vertical"
               margin={{ left: 10, right: 50, top: 4, bottom: 4 }}
             >
-              <XAxis type="number" tick={{ fill: '#8b91b0', fontSize: 11 }} domain={[0, total]} />
+              <XAxis type="number" tick={axisTickMuted} domain={[0, total]} />
               <YAxis
                 type="category"
                 dataKey="name"
-                tick={{ fill: '#e2e4f0', fontSize: 11 }}
+                tick={axisTickText}
                 width={200}
               />
               <Tooltip
@@ -334,7 +329,7 @@ export function StatsView({ datasets }: Props) {
                 radius={[0, 4, 4, 0]}
                 label={{
                   position: 'right',
-                  fill: '#8b91b0',
+                  fill: chartTextMuted,
                   fontSize: 11,
                   formatter: (v: unknown) => `${Math.round((Number(v) / total) * 100)}%`,
                 }}
@@ -353,11 +348,11 @@ export function StatsView({ datasets }: Props) {
               layout="vertical"
               margin={{ left: 10, right: 40, top: 4, bottom: 4 }}
             >
-              <XAxis type="number" tick={{ fill: '#8b91b0', fontSize: 11 }} />
+              <XAxis type="number" tick={axisTickMuted} />
               <YAxis
                 type="category"
                 dataKey="name"
-                tick={{ fill: '#e2e4f0', fontSize: 11 }}
+                tick={axisTickText}
                 width={200}
                 tickFormatter={(s) => (s.length > 28 ? s.slice(0, 27) + '…' : s)}
               />
@@ -367,7 +362,7 @@ export function StatsView({ datasets }: Props) {
                 name="Datasets"
                 fill="#818cf8"
                 radius={[0, 4, 4, 0]}
-                label={{ position: 'right', fill: '#8b91b0', fontSize: 11 }}
+                label={{ position: 'right', fill: chartTextMuted, fontSize: 11 }}
               />
             </BarChart>
           </ResponsiveContainer>
@@ -376,8 +371,8 @@ export function StatsView({ datasets }: Props) {
         <ChartCard title="Répartition géographique">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={areaData} margin={{ left: 10, right: 30, top: 4, bottom: 4 }}>
-              <XAxis dataKey="name" tick={{ fill: '#e2e4f0', fontSize: 12 }} />
-              <YAxis tick={{ fill: '#8b91b0', fontSize: 11 }} />
+              <XAxis dataKey="name" tick={{ ...axisTickText, fontSize: 12 }} />
+              <YAxis tick={axisTickMuted} />
               <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
               <Bar dataKey="value" name="Datasets" radius={[4, 4, 0, 0]}>
                 {areaData.map((_, i) => (
@@ -405,7 +400,7 @@ export function StatsView({ datasets }: Props) {
                   <Cell key={i} fill={PALETTE[i]} />
                 ))}
               </Pie>
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: '#e2e4f0' }} />
+              <Legend iconType="circle" wrapperStyle={legendStyle} />
               <Tooltip contentStyle={tooltipStyle} />
             </PieChart>
           </ResponsiveContainer>

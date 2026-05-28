@@ -1,12 +1,4 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* =============================================
-   DARK THEME — carbon/neon (default)
-   ============================================= */
+// Theme variables (dark default, light override)
 :root {
   --c-bg: #0a0a0a;
   --c-surface: #141414;
@@ -24,14 +16,19 @@
   --c-warning: #ffb800;
   --c-rt: #00e5ff;
   --c-info: #00c8e0;
-  --header-h: 57px;
+  --c-header-h: 57px;
+
+  // Chart colors (adapt to theme)
+  --c-chart-text: #e2e4f0;
+  --c-chart-text-muted: #8b91b0;
+  --c-chart-tooltip-bg: #1a1d27;
+  --c-chart-tooltip-border: #2e3248;
+  --c-chart-tooltip-text: #e2e4f0;
+
   font-size: 14px;
   color-scheme: dark;
 }
 
-/* =============================================
-   LIGHT THEME
-   ============================================= */
 html.light {
   --c-bg: #f4f4f4;
   --c-surface: #ffffff;
@@ -49,34 +46,13 @@ html.light {
   --c-warning: #d97706;
   --c-rt: #0369a1;
   --c-info: #0284c7;
+
+  // Chart colors for light theme
+  --c-chart-text: #1f2937;
+  --c-chart-text-muted: #6b7280;
+  --c-chart-tooltip-bg: #ffffff;
+  --c-chart-tooltip-border: #e5e7eb;
+  --c-chart-tooltip-text: #1f2937;
+
   color-scheme: light;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-}
-body {
-  background: var(--c-bg);
-  color: var(--c-text);
-  font-family:
-    'Inter',
-    system-ui,
-    -apple-system,
-    sans-serif;
-  line-height: 1.5;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-a {
-  color: var(--c-accent);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--c-accent-hover);
-  text-decoration: underline;
 }

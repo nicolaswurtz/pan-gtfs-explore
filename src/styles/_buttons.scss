@@ -1,0 +1,76 @@
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+
+  &--primary {
+    background: var(--c-accent);
+    color: #0a0a0a;
+    font-weight: 700;
+
+    &:hover {
+      background: var(--c-accent-hover);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border-color: var(--c-border2);
+    color: var(--c-text);
+
+    &:hover {
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--c-text-muted);
+    border-color: transparent;
+
+    &:hover {
+      color: var(--c-text);
+      background: var(--c-surface2);
+    }
+  }
+
+  &--lg {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+  }
+
+  &--sm {
+    padding: 4px 10px;
+    font-size: 0.77rem;
+  }
+
+  &--micro {
+    padding: 1px 6px;
+    font-size: 0.67rem;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--c-text-muted);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--c-expired);
+      border-color: var(--c-expired);
+    }
+  }
+}

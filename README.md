@@ -42,10 +42,12 @@ Pour chaque ressource gtfs-rt valide : titre, présence de `trip_updates`, `serv
 
 ## Stack technique
 
-- **React 19** + **TypeScript** + **Vite**
-- **Recharts** pour les graphiques
+- **React 19** + **TypeScript** + **Vite 8**
+- **SCSS** (partials structurés en `src/styles/`) pour les styles composants
+- **Tailwind CSS v4** (via `@tailwindcss/vite`) pour les utilitaires, avec `@theme` mappant les variables CSS du projet
+- **Recharts** pour les graphiques (couleurs adaptatives dark/light via `useChartColors`)
 - **IndexedDB** pour le cache local (TTL 24h)
-- SPA, desktop uniquement, sans back-end
+- SPA, desktop-first (responsive mobile supporté), sans back-end
 - Aucune dépendance d'état global (hooks locaux)
 
 ## Lancer le projet

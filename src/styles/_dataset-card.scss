@@ -1,0 +1,205 @@
+// Dataset list & cards
+.dataset-list {
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+
+  &__info {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    font-weight: 600;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px 0 12px;
+
+  &__info {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+  }
+}
+
+.dataset-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--c-border2);
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 12px 14px 9px;
+    border-bottom: 1px solid var(--c-border);
+    gap: 10px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+
+  &__title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--c-text);
+    word-break: break-word;
+
+    &:hover {
+      color: var(--c-accent);
+    }
+  }
+
+  &__publisher {
+    font-size: 0.77rem;
+    color: var(--c-text-muted);
+  }
+
+  &__badges {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__gtfs {
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__gtfs-rt {
+    background: var(--c-surface2);
+    border-top: 1px solid var(--c-border);
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+// GTFS Resource block inside card
+.gtfs-resource {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px 9px;
+  background: var(--c-surface2);
+  border-radius: 6px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-color: var(--c-border);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--c-text);
+  }
+
+  &__modes {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  &__dates {
+    font-size: 0.77rem;
+    color: var(--c-text-muted);
+  }
+
+  &__features {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+}
+
+.validity-days {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+// GTFS-RT resource block
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--c-rt);
+  margin-bottom: 1px;
+}
+
+.gtfsrt-resource {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 5px 9px;
+  background: rgba(0, 229, 255, 0.05);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 229, 255, 0.12);
+
+  html.light & {
+    background: rgba(3, 105, 161, 0.06);
+    border-color: rgba(3, 105, 161, 0.15);
+  }
+
+  &__title {
+    font-size: 0.8rem;
+    color: var(--c-text);
+    flex-shrink: 0;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__features {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+}

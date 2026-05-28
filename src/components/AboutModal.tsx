@@ -10,8 +10,7 @@ export function AboutModal({ onClose }: Props) {
           ✕
         </button>
 
-        <div className="modal__icon">🚌</div>
-        <h2 className="modal__title">Transport Open Data Explorer</h2>
+        <h2 className="modal__title">Explorateur des données GTFS du PAN</h2>
         <p className="modal__subtitle">
           Exploration des données GTFS publiées sur{' '}
           <a href="https://transport.data.gouv.fr" target="_blank" rel="noreferrer">

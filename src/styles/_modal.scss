@@ -1,0 +1,141 @@
+// Modal (About)
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  html.light & {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+}
+
+.modal {
+  position: relative;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border2);
+  border-radius: 18px;
+  padding: 40px 44px 32px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  @media (max-width: 768px) {
+    padding: 28px 20px 24px;
+    border-radius: 14px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: var(--c-text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.15s;
+
+    &:hover {
+      color: var(--c-text);
+      background: var(--c-surface2);
+    }
+  }
+
+  &__icon {
+    font-size: 2.8rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--c-text-muted);
+  }
+
+  &__features {
+    text-align: left;
+    list-style: none;
+    padding: 10px 14px;
+    margin: 4px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background: var(--c-surface2);
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid var(--c-border);
+
+    li {
+      font-size: 0.82rem;
+      color: var(--c-text-muted);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid var(--c-border);
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__copyright {
+    font-size: 0.77rem;
+    color: var(--c-text-muted);
+  }
+
+  &__github {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--c-text-muted);
+    text-decoration: none;
+    border: 1px solid var(--c-border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.15s;
+
+    &:hover {
+      color: var(--c-text);
+      border-color: var(--c-border2);
+    }
+  }
+
+  &__cta {
+    margin-left: auto;
+  }
+}
+
+.about-btn {
+  font-size: 1rem;
+  padding: 4px 9px;
+  line-height: 1;
+  flex-shrink: 0;
+}
